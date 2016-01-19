@@ -1,0 +1,18 @@
+[{ "name": "Olympia Cards n Comics", 
+"address": "on pacific",
+ "rating": 5, 
+"facilities": ["Magic Cards", "Sci-fi stuff", "Star Wars games"], 
+"coords": [-122, 47], 
+ "openingTimes": [
+{ "days": "Mon-Sun", "opening": "10:00 am", "closing": "Midnight", "closed": false}, 
+{"days": "Sat", "opening": "9:00 am", "closing": "2:00 am", "closed": false}
+] 
+},
+ {"name": "Burger King",
+  "address": "on pacific", 
+  "rating": 3,
+   "facilities": ["Diet Coke", "French Fries"],
+    "coords": [-122, 47],
+      "openingTimes": [{ "days": "Mon-Sun", "opening": "10:00 am", "closing": "Midnight", "closed": false}, 
+      {"days": "Sat", "opening": "9:00 am", "closing": "2:00 am", "closed": false}] 
+  }]

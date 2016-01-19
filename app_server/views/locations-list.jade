@@ -1,64 +1,25 @@
 extends layout
-
+include _includes/sharedHTMLfunctions
 block content
   #banner.page.header
     .row
       .col-lg-6
-        h1 Loc8r
-          small &nbsp;Find places to work with wifi near you!
+        h1 pageHeader.title
+          small &nbsp;#{pageHeader.strapline}
   .row
     .col-xs-12.col-sm-8
       .row.list-group
-        .col-xs-12.list-group-item
-          h4
-            a(href="/location") Olympia Cards and Comics
-            small &nbsp
-              span.glyphicon.glyphicon-star
-              span.glyphicon.glyphicon-star
-              span.glyphicon.glyphicon-star
-              span.glyphicon.glyphicon-star-empty
-              span.glyphicon.glyphicon-star-empty
-            span.badge.pull-right.badge-default 100m
-          p.address 125 High street Redding, RG6 1PS
-          p
-            span.label.label-warning Diet Coke
-            &nbsp
-            span.label.label-warning Brownies
-            &nbsp
-            span.label.label-warning MTG
-        .col-xs-12.list-group-item
-          h4
-            a(href="/location") Burger King
-            small &nbsp
-              span.glyphicon.glyphicon-star
-              span.glyphicon.glyphicon-star
-              span.glyphicon.glyphicon-star
-              span.glyphicon.glyphicon-star-empty
-              span.glyphicon.glyphicon-star-empty
-            span.badge.pull-right.badge-default 100m
-          p.address 125 High street Redding, RG6 1PS
-          p
-            span.label.label-warning Diet Coke
-            &nbsp
-            span.label.label-warning French Fries
-            &nbsp
-            span.label.label-warning Burgers
-        .col-xs-12.list-group-item
-          h4
-            a(href="/location") Barnes & Noble
-            small &nbsp
-              span.glyphicon.glyphicon-star
-              span.glyphicon.glyphicon-star
-              span.glyphicon.glyphicon-star
-              span.glyphicon.glyphicon-star-empty
-              span.glyphicon.glyphicon-star-empty
-            span.badge.pull-right.badge-default 100m
-          p.address 125 High street Redding, RG6 1PS
-          p
-            span.label.label-warning Books
-            &nbsp
-            span.label.label-warning Brownies
-            &nbsp
-            span.label.label-warning MTG
+        each location in locations
+          .col-xs-12.list-group-item
+            h4
+              a(href="/location")= location.name
+              small &nbsp
+               +outputRating(location.rating)
+              span.badge.pull-right.badge-default= location.distance
+            p.address= location.address
+            p
+              each facility in location.facilities  
+                span.label.label-warning= facility
+                &nbsp;
     .col-xs-12.com-sm-4
       p.lead Loc8r helps you find blah yada          
