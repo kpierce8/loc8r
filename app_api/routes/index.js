@@ -13,9 +13,9 @@ router.delete('/locations/:locationid', locations.locationsDeleteOne);
 
 /*Reviews */
 router.post('/locations/:locationid/reviews', reviews.reviewsCreate);
-router.get('/locations/:locationid/reviews/:reviewId', reviews.reviewsReadOne);
-router.put('/locations/:locationid/reviews/:reviewId', reviews.reviewsUpdateOne);
-router.delete('/locations/:locationid/reviews/:reviewId', reviews.reviewsDeleteOne);
+router.get('/locations/:locationid/reviews/:reviewid', reviews.reviewsReadOne);
+router.put('/locations/:locationid/reviews/:reviewid', reviews.reviewsUpdateOne);
+router.delete('/locations/:locationid/reviews/:reviewid', reviews.reviewsDeleteOne);
 
 
 module.exports = router;
