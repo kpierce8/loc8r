@@ -36,7 +36,7 @@ module.exports.locationsListByDistance = function(req, res) {
 
 	var geoOptions = {
 		spherical: true,
-		maxDistance: theEarth.getRadsFromDistance(2000.0),
+		//maxDistance: theEarth.getRadsFromDistance(2000.0),
 		num: 10 //max objects returned
 	};
 	if (!lng || !lat) {
