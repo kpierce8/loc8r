@@ -7,6 +7,4 @@ block content
         h1= title
   .row
     .col-md-6.col-sm-12
-      p 
-      | A whole lot of generic text cngo here about stuff.
-      | the pipe character does something like plain text??
+      p !{(content).replace(/\n/g, '<br/>')}
