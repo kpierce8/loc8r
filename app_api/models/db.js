@@ -1,6 +1,7 @@
 var mongoose = require( 'mongoose');
 
-var dbURI = 'mongodb://localhost/Loc8r';
+var dbURI = "mongodb://heroku_v06xwpd8:cav12iust3pj8ntd4d0u9nk4uv@ds047335.mongolab.com:47335/heroku_v06xwpd8";
+//var dbURI = 'mongodb://localhost/Loc8r';
 mongoose.connect(dbURI);
 
 mongoose.connection.on('connected', function(){
