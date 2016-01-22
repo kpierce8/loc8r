@@ -9,6 +9,22 @@ var sendJsonResponse = function(res, status, content) {
 };
 
 
+var _showError = function(req, res, status){
+  var title, content;
+  if (status === 404) {
+    title: "404, not the page your looking for";
+    content: "go look for a better page";
+  } else {
+    title: status + ", somethings not right";
+    content: "go look for a better page";
+  }
+  res.status(status);
+  res.render('generic-text', {
+    title: title,
+    content: content
+  });
+};
+
 var doSetAverageRating = function(location){
   var i, reviewCount, ratingAverage, ratingTotal;
   if (location.reviews && location.reviews.length > 0) {
@@ -50,8 +66,10 @@ var doAddReview = function(req, res, location) {
       rating: req.body.rating,
       reviewText: req.body.reviewText
     });
+    console.log(location);
     location.save(function(err, location) {
-      console.log("saving location with review " + location.reviews);
+     
+        console.log("saving location with review " + location.reviews);
       var thisReview;
       if (err) {
         sendJsonResponse(res, 400, err); 
@@ -59,7 +77,10 @@ var doAddReview = function(req, res, location) {
         updateAverageRating(location._id);
         thisReview = location.reviews[location.reviews.length - 1];
         sendJsonResponse(res, 201, thisReview);
-    }
+      }
+
+     
+     
   });
   }
 };

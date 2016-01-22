@@ -43,6 +43,21 @@ var renderReviewForm = function(req, res, locDetail) {
 	);
 };
 
+
+var _formatDistance = function( distance) {
+	var numDistance, unit;
+	if (distance > 1) {
+		numDistance = parseFloat(distance).toFixed(1);
+		unit = 'km';
+	} else {
+		numDistance = parseInt(distance * 1000, 10).toFixed(1);
+		unit = 'm';
+	};
+	return numDistance + unit;
+};
+
+
+
 var _showError = function(req, res, status){
 	var title, content;
 	if (status === 404) {
@@ -100,7 +115,15 @@ module.exports.homeList = function(req, res){
 	    };
 	request(
 		requestOptions, function(err, response, body){
-			renderHomepage(req, res, body);
+			var i, data;
+			data = body;
+			if (response.statusCode === 200 && data.length) {
+					for (i=0; i<data.length; i++){
+				data[i].distance = _formatDistance(data[i].distance);
+			}
+
+			}					
+			renderHomepage(req, res, data);
 		});
 };
 
@@ -133,12 +156,10 @@ module.exports.doAddReview = function(req, res){
 			reviewText: req.body.reviewText
 		}
 
-
 	requestOptions = {
 		url : apiOptions.server + path,
 		method: 'POST',
 		json: postdata 
-		
 	    };
 		request(
 		requestOptions, function(err, response, body){
