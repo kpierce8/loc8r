@@ -2,11 +2,12 @@
 var request = require('request');
 
 var apiOptions = {
-	server: "http://localhost:3000"
+	server: "https://agile-gorge-9222.herokuapp.com"
+	//server: "http://localhost:3000"
 };
 
 if (process.env.NODE_ENV === 'production') {
-	apiOptions.server = "https://....herokuapp.com";
+	apiOptions.server = "https://agile-gorge-9222.herokuapp.com";
 }
 
 var renderHomepage = function(req, res, responseBody){
